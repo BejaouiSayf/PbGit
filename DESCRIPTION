@@ -8,7 +8,8 @@ NeedsCompilation: no
 Depends: shiny,
     Matching, 
     MatchIt,
-    cem, 
+    cem,
+    optmatch,
     e1071, 
     Zelig
 Author: Bejaoui Sayf <bejaoui@gmail.com>
