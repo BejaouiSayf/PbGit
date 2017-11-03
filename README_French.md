@@ -7,10 +7,7 @@ Temps d'apprentissage du package `MatchItShiny` : **court !**
 L'objectif de `MatchItShiny` est de simplifier le work flow de l'évaluateur ! Facile à utiliser (sans avoir à  connaître le langage R), à partir de votre browser (chrome, Microsoft Edge, Firefox), avec quelques clics-souris vous obtenez l'estimation de l'effet causal, vous testez la condition d'équilibrage des distributions, les graphiques qui vont avec, etc. 
 
 
-**1. 1st problematic**: There is no consensus on how exactly matching ought to be done and how to measure the success of the matching procedure. A wide variety of matching procedures have been proposed, and `MatchItShiny` implements many of them.
-
-
-**2. 2sd problematic**: The work flow of an evaluateur 
+** Problematique**: Il n'existe pas de consensus sur quelle méthode d'appariement à utiliser pour réussir la mesure de l'effet causal. Face à la diversité de ces méthodes proposées dont `MatchItShiny` implémente certaines, le workflow de l'évaluateur devient compliqué.
 
 # Usage
 
