@@ -1,0 +1,86 @@
+library("devtools", lib.loc="C:/Users/bejao/OneDrive/R-Open 3.4.1/library")
+> devtools::install_github("BejaouiSayf/MatchItShiny")
+Downloading GitHub repo BejaouiSayf/MatchItShiny@master
+from URL https://api.github.com/repos/BejaouiSayf/MatchItShiny/zipball/master
+Installing MatchItShiny
+Installing 1 package: cem
+also installing the dependencies ‘Matching’, ‘MatchIt’, ‘combinat’, ‘randomForest’
+
+trying URL 'https://mran.microsoft.com/snapshot/2017-09-01/bin/windows/contrib/3.4/Matching_4.9-2.zip'
+Content type 'application/zip' length 939872 bytes (917 KB)
+downloaded 917 KB
+
+trying URL 'https://mran.microsoft.com/snapshot/2017-09-01/bin/windows/contrib/3.4/MatchIt_3.0.1.zip'
+Content type 'application/zip' length 367074 bytes (358 KB)
+downloaded 358 KB
+
+trying URL 'https://mran.microsoft.com/snapshot/2017-09-01/bin/windows/contrib/3.4/combinat_0.0-8.zip'
+Content type 'application/zip' length 29663 bytes (28 KB)
+downloaded 28 KB
+
+trying URL 'https://mran.microsoft.com/snapshot/2017-09-01/bin/windows/contrib/3.4/randomForest_4.6-12.zip'
+Content type 'application/zip' length 179463 bytes (175 KB)
+downloaded 175 KB
+
+trying URL 'https://mran.microsoft.com/snapshot/2017-09-01/bin/windows/contrib/3.4/cem_1.1.17.zip'
+Content type 'application/zip' length 846531 bytes (826 KB)
+downloaded 826 KB
+
+package ‘Matching’ successfully unpacked and MD5 sums checked
+package ‘MatchIt’ successfully unpacked and MD5 sums checked
+package ‘combinat’ successfully unpacked and MD5 sums checked
+package ‘randomForest’ successfully unpacked and MD5 sums checked
+package ‘cem’ successfully unpacked and MD5 sums checked
+
+The downloaded binary packages are in
+	C:\Users\bejao\AppData\Local\Temp\Rtmp6rOnQ7\downloaded_packages
+Installing 1 package: e1071
+trying URL 'https://mran.microsoft.com/snapshot/2017-09-01/bin/windows/contrib/3.4/e1071_1.6-8.zip'
+Content type 'application/zip' length 894778 bytes (873 KB)
+downloaded 873 KB
+
+package ‘e1071’ successfully unpacked and MD5 sums checked
+
+The downloaded binary packages are in
+	C:\Users\bejao\AppData\Local\Temp\Rtmp6rOnQ7\downloaded_packages
+Skipping install of 'MatchIt' from a cran remote, the SHA1 (3.0.1) has not changed since last install.
+  Use `force = TRUE` to force installation
+Installing 1 package: shiny
+trying URL 'https://mran.microsoft.com/snapshot/2017-09-01/bin/windows/contrib/3.4/shiny_1.0.5.zip'
+Content type 'application/zip' length 2835289 bytes (2.7 MB)
+downloaded 2.7 MB
+
+package ‘shiny’ successfully unpacked and MD5 sums checked
+
+The downloaded binary packages are in
+	C:\Users\bejao\AppData\Local\Temp\Rtmp6rOnQ7\downloaded_packages
+"C:/Users/bejao/OneDrive/R-OPEN~1.1/bin/x64/R"  \
+  --no-site-file --no-environ --no-save  \
+  --no-restore --quiet CMD INSTALL  \
+  "C:/Users/bejao/AppData/Local/Temp/Rtmp6rOnQ7/devtools2f9015e549e/BejaouiSayf-MatchItShiny-f803a7e"  \
+  --library="C:/Users/bejao/OneDrive/R-Open  \
+  3.4.1/library" --install-tests 
+
+* installing *source* package 'MatchItShiny' ...
+** R
+** inst
+** preparing package for lazy loading
+** help
+No man pages found in package  'MatchItShiny' 
+*** installing help indices
+** building package indices
+** testing if installed package can be loaded
+* DONE (MatchItShiny)
+
+
+
+library("MatchItShiny", lib.loc="C:/Users/bejao/OneDrive/R-Open 3.4.1/library")
+Le chargement a nécessité le package : shiny
+Le chargement a nécessité le package : MatchIt
+Le chargement a nécessité le package : cem
+Le chargement a nécessité le package : tcltk
+Le chargement a nécessité le package : lattice
+
+How to use CEM? Type vignette("cem")
+
+Le chargement a nécessité le package : e1071
