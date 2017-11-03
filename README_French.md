@@ -1,6 +1,6 @@
 # MatchItShiny
 
-Keywords: *score de propension, appariement, équilibrage des distributions, effet causal, algorithme génétique, CEM, R.*
+Keywords: *score de propension, appariement, équilibrage des distributions, effet causal, évaluation non experimentale, algorithme génétique, CEM, R.*
 
 Temps d'apprentissage du package `MatchItShiny` : **court !**
 
