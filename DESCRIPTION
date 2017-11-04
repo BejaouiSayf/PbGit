@@ -7,7 +7,8 @@ Licence: GPL (>= 2)
 NeedsCompilation: no
 Depends: shiny,
     MatchIt,
-    e1071
+    e1071, 
+    DT
 Imports:    
     cem,
     optmatch,

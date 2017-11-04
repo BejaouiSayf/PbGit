@@ -1,5 +1,10 @@
+library(shiny)   # Obligatoire avec 1dependencs
+library(MatchIt) # Obligatoire avec 1dependencs
+library(e1071)  # Obligatoire avec 1dependencs (Pr le skewness et le kurtosis)
+library(DT)
+
+
 # library(plotly)
-library(e1071)  # Pr le skewness et le kurtosis
 data(lalonde, package = "Matching")
 lalondeMatching <- lalonde[, c(ncol(lalonde), 1:8, 10:11, 9)]
 names(lalondeMatching)[names(lalondeMatching)=="nodegr"] <- "nodegree"
@@ -504,30 +509,24 @@ output$MatriceConfusion = renderPrint(table(m.out()$distance > 0.5, data()[, inp
 #####               Functions for 1st tabPanel "Data"               #####
 #########################################################################
 
-.df = reactive({
-within(data(), {
-distance <- fitted(m.out()$model)
-})
-})
+output$data = renderTable (data()[1:15, ], rownames = TRUE)
 
-  output$data = renderTable (
-    .df()
-    , rownames = TRUE
-    	  # , options = list(
-    	  	# "orderClasses" = TRUE
-    	    # , "responsive" = TRUE
-    	    # , "pageLength" = 10)
-  )
-output$dim = renderText(paste("DIM:", nrow(.df()), "obs", "x", ncol(.df()), "variables."))
+output$dim = renderText(paste("DIM:", nrow(data()), "obs", "x", ncol(data()), "variables."))
 
 # Rq : Tu peux combiner tab1 et tab4 (1tab pr afficher les ≠ BD : original, avec la var distance, m.data "all, treat, control, unmatched") !
 # mais tu pense que ce n'est pas 1bonne idée parcq il y'aura trop d'options à cocher.
 # Q : Cmnt tu peux faire apparaître NSW (les row.names) ?
 # S : Il faut que tu fasse 1fonc avec if else qui telecharge la BD avec ou sans les row.names ! 
 
+# .df = reactive({
+# within(data(), {
+# distance <- fitted(m.out()$model)
+# })
+# })
+# S : Pr ajouter le score de propension à la BD original ! 
 
 #########################################################################
-#####           Functions for 2sd tabPanel Summary of dataset       #####
+#####           Functions for 3rd tabPanel Summary of dataset       #####
 #########################################################################
 
 # Ce que tu peux faire pr que soit + joli, des conditions sur le fait que la var est de type quali ou quanti pr adapté la sortie de summary.
@@ -664,7 +663,7 @@ output$dim = renderText(paste("DIM:", nrow(.df()), "obs", "x", ncol(.df()), "var
   # , h5(align = "center", strong("Table of min, max, missing and unique values by variables:"))
  
 #########################################################################
-#####   Functions for 3rd tabPanel comparaison treat vs. control    #####
+#####   Functions for 4th tabPanel comparaison treat vs. control    #####
 #########################################################################
 
   output$var_single_tab3 = renderUI(
@@ -739,7 +738,7 @@ output$dim = renderText(paste("DIM:", nrow(.df()), "obs", "x", ncol(.df()), "var
 
 
 #########################################################################
-#####           Functions for 4th tabPanel matchet dataset          #####
+#####           Functions for 2sd tabPanel matchet dataset          #####
 #########################################################################
 
 y = reactive({
@@ -757,9 +756,6 @@ y = reactive({
 # re78 <- as.data.frame(allonde$re78, stringsAsFactors = FALSE)
 # names(y) <- "re78"
 # row.names(y) <- row.names(lalonde)
-
-
-
 
 
 ## Return the matched data 
@@ -780,12 +776,18 @@ m.data = reactive({
 
 # Show the generated columns at the first position:
 # weights, subclasses, or the distance measure
-output$m.data = renderDataTable(
-  {m.data()}
+
+output$m.data = DT::renderDataTable({
+  datatable(m.data()
+    , rownames = TRUE
     , options = list("orderClasses" = TRUE
     , "responsive" = TRUE
     , "pageLength" = 10)
-  )
+    )
+})
+
+# output$m.data = renderTable(m.data(), rownames = TRUE)
+      
 
 # MergedDataset <- merge(X, match.matrix, 
 #   all=TRUE, by="row.names")

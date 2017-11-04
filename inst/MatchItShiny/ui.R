@@ -420,11 +420,11 @@ condition = "input.caliperop == true"
 
 , mainPanel(
 		tabsetPanel(id = "tabsetPanel"
-			, selected = "Values"
+			, selected = ".Data"
 #########################################################################
 #####               7th tabPanel "Quick evaluation" 	              #####
 #########################################################################
-, tabPanel("Quick Evaluation"
+, tabPanel("Quick Evaluation", icon = icon("heart")
 , br()
 , br()
 
@@ -543,7 +543,7 @@ column(6
 #####               	5th tabPanel "Values" 				        #####
 ######################################################################### 
 
-, tabPanel("Values"
+, tabPanel("Values", icon = icon("sort-numeric-asc")
 , br()
 , br()
 
@@ -571,46 +571,9 @@ column(6
 )
 )
 #########################################################################
-#####               	4th tabPanel "Matched Data"		            #####
+#####  4th tabPanel: Display interactive comparaison treat vs. control #####
 ######################################################################### 
-
-, tabPanel(".Data", br(), br()
-, div(align = "center"
-, shiny::radioButtons(
-"m.data"
-, "Obtain the generated data for:"
-, choices = c(
- "All" = "full"
-, "Matched data" = "all"
-, "Matched treatment group" = "treat"
-, "Matched control group" = "control"
-, "Unmatched data" = "unmatched"
-)
-, selected = "all"
-, inline = TRUE
-)
-, br()	
-, br()	
-, dataTableOutput("m.data"), br(), br()
-, br()	
-, strong(verbatimTextOutput("dim.m.data")
-, br()		
-, downloadButton("download.m.data", "Download")
-)
-)
-)	
-
-# output$sample = renderUI(
-# # , uiOutput("sample")
-# )
-
-
-#########################################################################
-#####  3rd tabPanel: Display interactive comparaison treat vs. control #####
-######################################################################### 
-
-
-  , tabPanel("Comparaison treat vs. control"
+, tabPanel("Comparaison treat vs. control", icon = icon("search-plus")
 , br()
 , br()
 		, fluidRow(
@@ -627,20 +590,17 @@ column(6
    # Tu peux faire com ds Factoshiny 1menu déroulant pr voir le graph de chak var.
 
 #########################################################################
-#####               2sd tabPanel "Summary"				            #####
+#####               3rd tabPanel "Summary"				            #####
 ######################################################################### 
-## 2sd tabPanel: Display interactive summaries (more better than the default stats::summary and questionr::describe)
+## 3rd tabPanel: Display interactive summaries (more better than the default stats::summary and questionr::describe)
 
-, tabPanel("Summary" 
+, tabPanel("Summary", icon = icon("bar-chart")
 , br()
 , br()
 , uiOutput("VARS")
 , dataTableOutput("data.selec.summary")
 , verbatimTextOutput("download_summary_text")			
-, br()           	
 , p(downloadButton("download_summary", "Download"), align = "center")
-, br()
-, br()
 , br()
 , br()           	
 , uiOutput("VAR")               	
@@ -648,17 +608,48 @@ column(6
 )	
 
 #########################################################################
+#####               	2sd tabPanel "Matched Data"		            #####
+######################################################################### 
+
+, tabPanel(".Data", icon = icon("files-o"), br(), br()
+, div(align = "center"
+, shiny::radioButtons(
+"m.data"
+, "Obtain and download the generated data for the:"
+, choices = c(
+ "Matched treatment group" = "treat"
+, "Matched control group" = "control"
+, "Unmatched data" = "unmatched"
+, "Matched data" = "all"
+# , "All" = "full"
+)
+, selected = "treat"
+, inline = TRUE
+)
+, br()
+, br()
+, dataTableOutput({"m.data"})      
+# , tableOutput("m.data")
+, br()
+, br()
+, strong(verbatimTextOutput("dim.m.data")
+, downloadButton("download.m.data", "Download")
+)
+)
+)	
+#########################################################################
 #####               	1st tabPanel "Data"					        #####
 ######################################################################### 
 
 ## 1st tabPanel: Return dataframe (reactive version) and display dim 
 
-, tabPanel("Data", br(), br()
+, tabPanel("Data", icon = icon("table"), br(), br()
 , div(align = "center"
 , tableOutput("data") 
 , br() 
-, strong(verbatimTextOutput("dim")))
-)      		
+, strong(verbatimTextOutput("dim"))
+, strong(print(em("This is your original database")),"!"))
+)
 
 # fluidRow(
 # br(),
@@ -675,12 +666,6 @@ column(6
 # p(downloadButton("downloadData5",gettext("Download as pdf")),align="center")),
 # br(),
 # align="center")
-
-
-
-
-
-
 
 # fluidRow(
 
